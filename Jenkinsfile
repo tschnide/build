@@ -22,6 +22,12 @@ pipeline {
             } 
         }
         stage('Deploy to Stage?') { agent none
+            when {
+                    anyOf {
+                    branch 'stage'
+                    environment name: 'NODE_VER', value: '8.1.0'
+                } 
+            }
             steps {
                 input 'Deploy to stage?'
             } 
