@@ -9,15 +9,20 @@ pipeline {
                 NEW_VAR = "HOWDY!"
             }
             steps {
-                echo "HelloWorld"
+                echo "Hello World"
                 sh 'echo $NODE_VER'
-                echo "${env.NEW_VAR}"
+                echo "${env.DEPLOY_VERSION}"
             }
         }
         stage('Who Am I?') { agent any
             steps {
-               echo "${env.NEW_VAR}"
+               echo "${env.DEPLOY_VERSION}"
                sh 'host -t TXT pgp.michaelholley.us |awk -F \'"\' \'{print $2}\'' 
+            } 
+        }
+        stage('Deploy to Stage?') { agent none
+            step {
+                input 'Deploy to stage?'
             } 
         }
     }
