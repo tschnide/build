@@ -9,7 +9,7 @@ pipeline {
                 NEW_VAR = "HOWDY!"
             }
             steps {
-                echo "hello world"
+                echo "HelloWorld"
                 sh 'echo $NODE_VER'
                 echo "${env.NEW_VAR}"
             }
@@ -17,7 +17,7 @@ pipeline {
         stage('Who Am I?') { agent any
             steps {
                echo "${env.NEW_VAR}"
-               sh 'host -t TXT pgp.michaelholler.us |awk -F \'"\' \'{print $2}\'' 
+               sh 'host -t TXT pgp.michaelholley.us |awk -F \'"\' \'{print $2}\'' 
             } 
         }
     }
